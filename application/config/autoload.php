@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('database', 'session');
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array();
+$autoload['helper'] = array('url');
 
 
 /*
@@ -110,6 +110,18 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array();
+
+/*
+| -------------------------------------------------------------------
+|  Auto-load Sparks
+| -------------------------------------------------------------------
+| Prototype:
+|
+|   $autoload['spark'] = array('spark1', 'spark2');
+| NOTE: Include unavailable sparks may cause some errors on every pages, use carefully.
+|
+*/
+$autoload['sparks'] = array('php-activerecord/0.0.2', 'oi-messages/1.1.2');
 
 
 /* End of file autoload.php */

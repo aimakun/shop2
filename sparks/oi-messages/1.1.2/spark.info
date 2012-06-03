@@ -1,0 +1,7 @@
+name: oi
+
+version: 1.1.2
+
+compatibility: 2.0.3
+
+tags: ["session", "flashdata"]
