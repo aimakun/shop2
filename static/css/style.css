@@ -1,0 +1,146 @@
+.accessibility {
+    overflow: hidden;
+    position: absolute;
+    text-indent: -100%;
+}
+.clearfix:after {
+   content: ".";
+   display: block;
+   clear: both;
+   visibility: hidden;
+   line-height: 0;
+   height: 0;
+}
+ 
+.clearfix {
+   display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+   display: block;
+}
+ 
+* html .clearfix {
+   height: 1%;
+   overflow: visible;
+}
+
+a.btn { color: #333333; }
+a.btn-primary, a.btn-inverse, a.btn-danger { color: white; }
+.alert p {
+    margin:0;
+}
+header .menu {
+    margin-top: 160px;
+}
+.main-content h1 {
+    margin-bottom: 20px;
+}
+.item-list .item {
+    border: 1px dashed #ccc;
+    margin-bottom: 10px;
+}
+    .item-list .item.span3,
+    .product .detail {
+        margin: 4px;
+        padding: 5px;
+    }
+    .product .attachment-wrapper, .product .metadata {
+        margin-left: 3px;
+    }
+    .item-list .item .attachment {
+        display: block;
+        text-align: center;
+    }
+
+    .item-list .item .title {
+        float: left;
+        width: 140px;
+    }
+
+    .item-list .item .sale-metadata {
+        float: right;
+        width: 110px;
+        text-align: right;
+    }
+
+    .item-list .item .price span, .product .price span {
+        font-weight: bold;
+        color: red;
+    }
+    
+    .item-list .item .price span.sale, .product .price span.sale {
+        font-weight: normal;
+        text-decoration: line-through;
+        color: #999999;
+    }
+    
+    .status.status-available {
+        color: deepskyblue;
+    }
+    .status.status-sold_out {
+        color: red;
+    }
+    .status.status-pre_order {
+        color: darkorange;
+    }
+    .status.status-promotion {
+        color: red;
+    }
+    
+    
+
+    .item-list.row .item:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+.product .sold-label {
+    margin-top: 1em;
+    font-weight: bold;
+}
+    .product .metadata {
+        padding: 10px;
+    }
+    .product .sold-bar {
+        margin-right: 30px;
+        margin-left: 0;
+    }
+    
+    .product .attributes { margin-top: 10px; margin-bottom: 10px; }
+
+.orders th {
+    background: #3A87AD;
+    color: white;
+}
+    .orders .summary {
+        font-weight: bold;
+        text-align: right;
+    }
+    
+    .orders .separator {
+        border-top: 2px solid #999;
+    }
+    
+    .orders .price {
+        text-align: right;
+    }
+
+    .orders .total-price {
+        font-weight: bold;
+        color: red;
+    }
+    .orders .order-actions {
+        text-align: right;
+    }
+    .orders .item .action-cancel {
+        display: block;
+        text-align: center;
+        padding: 0 10px;
+    }
+    .orders .item .action-cancel:hover {
+        background: #F89406;
+    }
