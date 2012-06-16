@@ -1,6 +1,8 @@
 /* Author:
 
 */
+$(".alert").alert();
+
 
 
 
