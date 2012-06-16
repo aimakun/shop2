@@ -121,7 +121,7 @@ $autoload['model'] = array();
 | NOTE: Include unavailable sparks may cause some errors on every pages, use carefully.
 |
 */
-$autoload['sparks'] = array('php-activerecord/0.0.2', 'ci_alerts/1.1.7', 'ci_authentication/1.3.4');
+$autoload['sparks'] = array('php-activerecord/0.0.2');
 
 
 /* End of file autoload.php */
