@@ -27,6 +27,7 @@
  		if (!isset($args['title'])) {
  			$args['title'] = '';
  		}
+        /*
  		if (!isset($args['show_my_orders'])) {
  			$args['show_my_orders'] = TRUE;
  		}
@@ -38,6 +39,7 @@
  			'menu' => Menu::get_frontend_menu(),
  			'sidebar_menu' => Menu::get_sidebar_menu(),
  			'footer' => $this->_get_frontend_footer(),
+            'options' => $options,
  		);
 
  		// Wait orders has specific condition, this would not show in some page.
@@ -62,12 +64,60 @@
  				'wait_orders_list' => $wait_orders_list,
  			)
  		);
+        */
 
- 		return $output;
+ 		$options = array(
+            'sitename' => $this->get_option('sitename'),
+            'logo' => $this->get_option('logo'),
+        );
+
+        $output = array(
+            'title' => $args['title'],
+            'page_title' => isset($args['page_title']) ? $args['page_title'] : $args['title'],
+            'options' => $options,
+        );
+        return $output;
  	}
 
  	private function _get_frontend_footer()
  	{
  		return $this->load->view('frontend/footer', '', TRUE);
  	}
+
+    /**
+     * Load option and cache them for a request.
+     * Detect value and convert json when available.
+     */
+    public function get_option($name)
+    {
+        if (!isset($this->_options['name'])) {
+            $setting = Setting::find(
+                'all', 
+                array(
+                    'conditions' => array('name=?', $name),
+                )
+            );
+
+            if (isset($setting[0]->value))
+            {
+                $json = json_decode($setting[0]->value);
+                if (!$json)
+                {
+                    $value = $setting[0]->value;
+                }
+                else
+                {
+                    $value = $json;
+                }
+            }
+            else
+            {
+                $value = false;
+            }
+
+            $this->_options[$name] = $value;
+        }
+
+        return $this->_options[$name];
+    }
  }

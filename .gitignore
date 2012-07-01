@@ -117,6 +117,7 @@ Backup*/
 UpgradeLog*.XML
 
 application/views/backup/
+application/cache/
 
 
 

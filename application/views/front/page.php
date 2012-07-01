@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title></title>
+	<title><?php print ($title ? $title . ' | ' : '') . $options['sitename']; ?></title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -43,6 +43,8 @@
 
   /* Custom */
   .primary-menu { margin-top: 80px; }
+  .nav-tabs .caption { font-weight: bold; padding: 8px 12px; }
+  
 	</style>
 	<link rel="stylesheet" href="<?php print base_url('static'); ?>/css/bootstrap-responsive.min.css">
 	<link rel="stylesheet" href="<?php print base_url('static'); ?>/css/style.css">
@@ -55,7 +57,7 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <img class="logo" src="<?php print base_url('static'); ?>/img/logo.png" alt="Click to homepage" />
+          <img class="logo" src="<?php print base_url($options['logo']); ?>" alt="Click to homepage" />
         </div>
         <div class="span8">
           <div class="primary-menu">
@@ -73,8 +75,10 @@
       </div>
       <div class="row">
         <div class="span4">
-          <ul class="nav nav-list well">
-            
+          <ul class="nav nav-list well nav-member">
+<?php
+          if (Member::get_current_profile(FALSE)):
+?>
             <li class="nav-header">Your account</li>
             <li>
               <h4>aimakun</h4>
@@ -97,8 +101,9 @@
             <li><a href="#"><i class="icon-shopping-cart"></i> My bills</a></li>
             <li class="divider"></li>
             <li><a href="#"><i class="icon-off"></i> Logout</a></li>
-            <li class="divider"></li>
-            
+<?php
+          else:
+?>
             <li class="nav-header">Member account</li>
             <li>
               
@@ -131,7 +136,12 @@
               <a href="#">Create new account</a>
               <a href="#">Forgot password</a>
             </li>
-            <li class="divider"></li>
+<?php
+          endif;
+?>
+          </ul>
+          &nbsp;
+          <ul class="nav nav-list well">
             <li class="nav-header">Catalog</li>
             <li><a href="#"><i class="icon-th"></i> All products</a></li>
             <li><a href="#"><i class="icon-star"></i> Sales</a></li>
@@ -145,31 +155,28 @@
           </ul>
         </div>
         <div class="span8 main">
-          <div class="alert alert-error fade in">
+<?php
+        if (!empty($messages)):
+          foreach ($message as $type => $messages):
+?>
+          <div class="alert <?php print ($type != '' ? 'alert-' . $type : ''); ?> fade in">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>Warning:</strong> Best check yo self, you're not...<br />
-            <strong>Warning:</strong> Best check yo self, you're not...<br />
-            <strong>Warning:</strong> Best check yo self, you're not...<br />
-            <strong>Warning:</strong> Best check yo self, you're not...<br />
+            <?php print implode('<br />' . $messages); ?>
           </div>
-          <div class="alert alert-info fade in">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>Order:</strong> Best check yo self, you're not...<br />
-            
+<?php
+          endforeach;
+        endif;
+?>
+<?php
+        if ($page_title):
+?>
+          <h2><?php print $page_title; ?></h2>
+<?php
+        endif;
+?>
+          <div class="content">
+            <?php print $content; ?>
           </div>
-          <div class="alert fade in">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>Remove:</strong> Best check yo self, you're not...<br />
-            
-          </div>
-          <div class="alert alert-success fade in">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>Done:</strong> Best check yo self, you're not...<br />
-            
-          </div>
-          <h2>Page title here</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
       </div>
 
